@@ -1,0 +1,31 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.cart-btn-container {
+	position: relative;
+	background: transparent;
+	border: none;
+
+	.icon {
+		@include transition-pointer($transition);
+		font-size: 3rem;
+		color: $color-primary-2;
+
+		&:hover {
+			color: $color-primary-3;
+		}
+	}
+
+	.quantity {
+		position: absolute;
+		@include flex-center(center);
+		left: 75%;
+		top: 0%;
+		background: $color-red-1;
+		width: 23px;
+		height: 23px;
+		border-radius: 8px;
+		font-size: 1.2rem;
+		color: $color-white-1;
+	}
+}

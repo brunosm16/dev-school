@@ -1,0 +1,10 @@
+@mixin flex-center($justify: space-between) {
+	display: flex;
+	justify-content: $justify;
+	align-items: center;
+}
+
+@mixin transition-pointer($transition: all 0.3 ease-in-out) {
+	transition: $transition;
+	cursor: pointer;
+}
