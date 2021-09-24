@@ -1,0 +1,59 @@
+/*
+=======================
+  Fonts
+=======================
+*/
+@import url('https://fonts.googleapis.com/css2?family=Urbanist');
+@import url('https://fonts.googleapis.com/css2?family=Glory');
+
+/*
+=======================
+  Shadows
+=======================
+*/
+$box-shadow-dark: 0px 8px 24px rgba(149, 157, 165, 0.2);
+$box-shadow-light: 0px 8px 24px rgba(149, 157, 165, 0.5);
+
+/*
+=======================
+  Fonts
+=======================
+*/
+$ff-primary: 'Urbanist', sans-serif;
+$ff-secondary: 'Glory', sans-serif;
+
+/*
+=======================
+  Widths
+=======================
+*/
+$fixed-width: 620px;
+$max-width: 1170px;
+
+/*
+=======================
+  Other variables
+=======================
+*/
+$transition: all 0.3s linear;
+$radius: 0.5rem;
+$spacing: 0.15rem;
+
+/*
+=======================
+  Colors
+=======================
+*/
+$color-primary-1: #212529;
+$color-primary-2: #343a40;
+$color-primary-3: #495057;
+$color-primary-4: #6c757d;
+$color-primary-5: #adb5bd;
+$color-white-1: #f8f9fa;
+$color-white-2: #e9ecef;
+$color-grey: #adb5bd;
+$color-grey-2: #ced4da;
+$color-orange-1: #ff6d00;
+$color-orange-2: #ff7900;
+$color-red-1: #e63946;
+$color-red-2: #d00000;

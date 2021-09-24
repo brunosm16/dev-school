@@ -1,0 +1,81 @@
+@import './variables';
+
+*,
+::before,
+::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+ul {
+	list-style-type: none;
+}
+
+a {
+	text-decoration: none;
+}
+
+body {
+	font-family: var(--ff-primary);
+	font-size: 0.875rem;
+	line-height: 1.5;
+	background: var(--color-white-2);
+	color: var(--color-primary-1);
+}
+
+h1,
+h2,
+h3,
+h4 {
+	margin-bottom: 0.625rem;
+	text-transform: capitalize;
+	letter-spacing: var(--spacing);
+	line-height: 1.25;
+}
+
+h1 {
+	font-size: 3rem;
+}
+
+h2 {
+	font-size: 1.75rem;
+}
+
+h3 {
+	font-size: 1.2rem;
+}
+
+h4 {
+	font-size: 0.875rem;
+}
+
+p {
+	margin-bottom: 1.2rem;
+	color: var(--clr-primary-2);
+}
+
+@media screen and (min-width: 800px) {
+	h1 {
+		font-size: 4rem;
+	}
+
+	h2 {
+		font-size: 2rem;
+	}
+
+	h3 {
+		font-size: 1.2rem;
+	}
+
+	h4 {
+		font-size: 1rem;
+	}
+
+	h1,
+	h2,
+	h3,
+	h4 {
+		line-height: 1;
+	}
+}
