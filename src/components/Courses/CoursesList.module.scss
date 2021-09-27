@@ -1,0 +1,42 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.courses {
+	display: flex;
+	flex-direction: column;
+	gap: 0.75rem;
+	width: 100%;
+
+	.courses-list {
+		@include flex-center(space-around);
+		padding: 1.25rem;
+	}
+
+	.courses-header {
+		color: $color-white-1;
+		border-top-right-radius: 15px;
+		border-bottom-right-radius: 15px;
+		padding: 0.25rem 2rem;
+		margin-bottom: 1rem;
+		background: $color-primary-1;
+		width: 380px;
+
+		.courses-nav ul {
+			display: flex;
+
+			li a {
+                @include transition-pointer($transition);
+				color: $color-white-1;
+				text-transform: capitalize;
+				text-decoration: underline;
+                margin-right: 0.25rem;
+
+                &:hover,
+                &:active,
+                .active {
+                    color:$color-grey;
+                }
+			}
+		}
+	}
+}

@@ -8,8 +8,14 @@
 	border-radius: 4px;
 	color: $color-grey;
 	box-shadow: $box-shadow-dark;
-	width: 600px;
+	width: 90%;
+    margin: 0 auto;
 	height: 200px;
+	text-align: center;
+
+	@media screen and (min-width: 800px) {
+        width: 45%;
+	}
 
 	span {
 		color: $color-red-1;
@@ -30,7 +36,11 @@
 	}
 
 	&:nth-child(3) {
-		width: 1000px;
+		width: 90%;
+
+		@media (min-width: 800px) {
+			width: 90%;
+		}
 
 		span {
 			color: $color-green-1;

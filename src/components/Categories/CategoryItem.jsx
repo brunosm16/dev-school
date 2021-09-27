@@ -1,27 +1,30 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styles from './CategoryItem.module.scss';
 
-const CategoryItem = ({ title }) => {
+const CategoryItem = ({ id, title }) => {
 	const titleSplit = title.split(' ');
 
 	const firstName = titleSplit[0];
 	const lastName = titleSplit[1];
 
 	return (
-		<div className={styles['category-item']}>
+		<Link to={`/categories/${id}`} className={styles['category-item']}>
 			<h1>
 				{firstName} <span>{lastName}</span>
 			</h1>
-		</div>
+		</Link>
 	);
 };
 
 CategoryItem.defaultProps = {
+	id: '',
 	title: '',
 };
 
 CategoryItem.propTypes = {
+	id: PropTypes.number,
 	title: PropTypes.string,
 };
 
