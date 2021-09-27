@@ -1,0 +1,39 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+.category-item {
+	@include flex-center(center);
+	@include transition-pointer($transition);
+	font-family: $ff-primary;
+	background: $color-primary-1;
+	border-radius: 4px;
+	color: $color-grey;
+	box-shadow: $box-shadow-dark;
+	width: 600px;
+	height: 200px;
+
+	span {
+		color: $color-red-1;
+	}
+
+	&:hover {
+		background: $color-primary-2;
+		color: $color-grey-2;
+		box-shadow: $box-shadow-light;
+	}
+
+	&:nth-child(1) span {
+		color: $color-red-1;
+	}
+
+	&:nth-child(2) span {
+		color: $color-orange-1;
+	}
+
+	&:nth-child(3) {
+		width: 1000px;
+
+		span {
+			color: $color-green-1;
+		}
+	}
+}
