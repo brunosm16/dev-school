@@ -1,0 +1,8 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.cart {
+    display: flex;
+	position: relative;
+    z-index:99;
+}

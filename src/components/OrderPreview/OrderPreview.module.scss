@@ -1,0 +1,77 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.order-preview {
+	display: grid;
+	grid-template-columns: 1fr;
+	row-gap: 2rem;
+	position: absolute;
+	top: 100%;
+	right: 0;
+	background: $color-primary-4;
+	width: 320px;
+	border-radius: 7px;
+	margin-top: 0.125rem;
+	padding: 0.75rem;
+	max-height: 30rem;
+
+	/* Galaxy S5 */
+	@media (max-width: 320px) {
+		width: 280px;
+	}
+
+	/* Galaxy fold */
+	@media (max-width: 280px) {
+		width: 230px;
+	}
+
+	&::before {
+		@include create-triangle(-2.5%, 89.2%, $color: $color-primary-1);
+	}
+
+	&::after {
+		@include create-triangle(-2.5%, 89.2%, $color: $color-primary-2);
+	}
+
+	.order-preview-list {
+		max-height: 23rem;
+		overflow: auto;
+		border-bottom: 1px $color-primary-5 solid;
+
+		&::-webkit-scrollbar {
+			width: 10px;
+		}
+
+		&::-webkit-scrollbar-track {
+			background-color: $color-primary-1;
+			border-radius: 30px;
+		}
+
+		&::-webkit-scrollbar-thumb {
+			background-color: $color-primary-3;
+			border-radius: 15px;
+		}
+	}
+
+	.checkout-container {
+		@include flex-center(center);
+		@include transition-pointer($transition);
+		width: 90%;
+		height: 50px;
+		margin: 0 auto;
+		border-radius: 7px;
+		background: $color-orange-1;
+		border: 1px $color-white-1 solid;
+		margin-bottom: 0.875rem;
+
+		&:hover {
+			background: $color-orange-2;
+		}
+
+		.checkout-link {
+			@include flex-center(center);
+			color: $color-white-1;
+			margin-top: 0.25rem;
+		}
+	}
+}

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import CartButtonIcon from '../CartButtonIcon/CartButtonIcon';
+import Cart from '../Cart/Cart';
 import styles from './Navbar.module.scss';
 
 const Navbar = () => (
@@ -11,7 +11,7 @@ const Navbar = () => (
 				</Link>
 			</h2>
 
-			<CartButtonIcon />
+			<Cart />
 		</div>
 	</header>
 );

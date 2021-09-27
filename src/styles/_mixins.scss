@@ -8,3 +8,19 @@
 	transition: $transition;
 	cursor: pointer;
 }
+
+@mixin create-triangle(
+	$top: 0px,
+	$left: 0px,
+	$border-radius: 12px,
+	$color: red
+) {
+	position: absolute;
+	display: block;
+	content: '';
+	top: $top;
+	left: $left;
+	border-left: $border-radius solid transparent;
+	border-right: $border-radius solid transparent;
+	border-bottom: $border-radius solid $color;
+}
