@@ -1,0 +1,27 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.not-found {
+	display: grid;
+	row-gap: 1.75rem;
+	color: $color-red-2;
+	text-align: center;
+
+	.link {
+		a {
+			@include transition-pointer($transition);
+			width: 120px;
+			padding: 0.75rem;
+			background: $color-orange-1;
+			border-radius: 20px;
+			text-transform: uppercase;
+			color: $color-white-1;
+			font-weight: bold;
+			font-size: 1.75rem;
+
+			&:hover {
+				background: $color-orange-2;
+			}
+		}
+	}
+}

@@ -1,4 +1,4 @@
-import { NavLink, useParams } from 'react-router-dom';
+import { NavLink, Redirect, useParams } from 'react-router-dom';
 import React from 'react';
 import CourseItem from './CourseItem/CourseItem';
 import styles from './CoursesList.module.scss';
@@ -47,6 +47,10 @@ const Courses = () => {
 	const currentCategory = fakeCategories.find(
 		(category) => category.id === params.categoryId
 	);
+
+	if (!currentCategory) {
+		return <Redirect to="/not-found" />;
+	}
 
 	return (
 		<div className={styles.courses}>
