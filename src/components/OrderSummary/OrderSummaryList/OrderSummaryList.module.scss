@@ -1,0 +1,20 @@
+@import '../../../styles/variables';
+
+.list-wrapper {
+    display: grid;
+    row-gap: 0.75rem;
+    
+    h2 {
+        color: $color-primary-1;
+    }
+
+    .order-summary-list {
+        display: grid;
+        max-height: 20rem;
+        overflow: auto;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+    }
+}

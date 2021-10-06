@@ -1,0 +1,19 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.container select {
+    width: 8rem;
+    border-radius: 15px;
+    border-color: transparent;
+    outline: none;
+    padding: 0.125rem;
+    transition: all 0.3s ease-in-out;
+}
+
+.container label {
+    font-weight: 700;
+    text-transform: capitalize;
+}

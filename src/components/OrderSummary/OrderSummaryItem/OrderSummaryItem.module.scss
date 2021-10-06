@@ -1,0 +1,65 @@
+@import '../../../styles/mixins';
+@import '../../../styles/variables';
+
+.order-summary-item {
+    @include flex-center();
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px $color-primary-3 solid;
+    color:$color-primary-1;
+
+    .img-container img {
+        width: 90px;
+        height: 90px;
+        object-fit: cover;
+        border-radius: 50%;
+    }
+
+    .quantity-actions {
+        display: flex;
+        justify-content: space-between;
+        width: 90px;
+
+        .btn {
+            @include transition-pointer($transition);
+            width: 20px;
+            font-size: 1rem;
+            border:none;
+
+            &:hover {
+                background-color:$color-white-2;
+            }
+        }
+
+        span {
+            background: $color-primary-1;
+            color:$color-white-1;
+            width: 40px;
+            text-align: center;
+            border-radius: 4px;
+        }
+    }
+
+    .total-price-remove {
+        @include flex-center();
+        align-items: center;
+
+        h3 {
+            margin-top: 0.45rem;
+            margin-right: 0.75rem;
+        }
+
+        .btn {
+            @include transition-pointer($transition);
+            background: none;
+            border:none;
+            font-size: 1rem;
+            font-weight: bold;
+            color:$color-red-1;
+
+            &:hover {
+                color:$color-red-2;
+            }
+        }
+    }
+}
