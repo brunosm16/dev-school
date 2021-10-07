@@ -24,7 +24,7 @@ CategoryItem.defaultProps = {
 };
 
 CategoryItem.propTypes = {
-	id: PropTypes.number,
+	id: PropTypes.string,
 	title: PropTypes.string,
 };
 

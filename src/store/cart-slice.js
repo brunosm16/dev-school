@@ -15,48 +15,60 @@ const cartSlice = createSlice({
 		addItem(state, action) {
 			const currItems = state.items;
 
-			const { id, name, unitPrice, totalItemPrice } = action.payload;
+			const inputItem = action.payload;
 
-			const existingItem = findExistingItemById(currItems, id);
+			const existingItem = findExistingItemById(currItems, inputItem.id);
 
 			/* If item already exists only increase item amount,
                otherwise push item in current items(currItems)
              */
 			if (existingItem) {
 				existingItem.itemQuantity += 1;
-				existingItem.totalItemPrice += existingItem.unitPrice;
+				existingItem.totalItemPrice += existingItem.price;
 			} else {
 				currItems.push({
-					id,
-					name,
-					unitPrice,
+					id: inputItem.id,
+					name: inputItem.name,
+					price: inputItem.price,
 					itemQuantity: 1,
-					totalItemPrice,
+					totalItemPrice: inputItem.price,
+					imgUrl: inputItem.imgUrl,
 				});
 			}
 
-			state.totalPrice += unitPrice;
+			state.totalPrice += inputItem.price;
 			state.totalQuantity += 1;
 		},
 
 		removeItem(state, action) {
 			const itemId = action.payload;
-			let currItems = state.items;
+			const currItems = state.items;
 
-			const itemToDelete = findExistingItemById(state.items, currItems);
+			const itemToDelete = findExistingItemById(currItems, itemId);
 
 			/* if there is only one quantity of the item it is deleted, otherwise
                item quantity is decreased
              */
-			if (itemToDelete.itemQuantity === 1) {
-				currItems = removeItemById(currItems, itemId);
+			if (itemToDelete && itemToDelete.itemQuantity === 1) {
+				state.items = removeItemById(currItems, itemId);
 			} else {
 				itemToDelete.itemQuantity -= 1;
-				itemToDelete.totalItemPrice -= itemToDelete.unitPrice;
+				itemToDelete.totalItemPrice -= itemToDelete.price;
 			}
 
-			state.totalPrice -= itemToDelete.unitPrice;
+			state.totalPrice -= itemToDelete.price;
 			state.totalQuantity -= 1;
+		},
+
+		deleteItem(state, action) {
+			const itemId = action.payload;
+			const currItems = state.items;
+
+			const itemToDelete = findExistingItemById(currItems, itemId);
+
+			state.items = removeItemById(currItems, itemId);
+			state.totalPrice -= itemToDelete.totalItemPrice;
+			state.totalQuantity -= itemToDelete.itemQuantity;
 		},
 	},
 });

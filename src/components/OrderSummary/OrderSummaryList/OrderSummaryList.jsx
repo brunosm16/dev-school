@@ -6,15 +6,17 @@ import OrderSummaryItem from '../OrderSummaryItem/OrderSummaryItem';
 const OrderSummaryList = ({ items }) => (
 	<div className={styles['list-wrapper']}>
 		<h2>order summary</h2>
-
+		
 		<ul className={styles['order-summary-list']}>
 			{items.map((item) => (
 				<OrderSummaryItem
+					key={item.id}
+					id={item.id}
 					imgUrl={item.imgUrl}
 					name={item.name}
 					price={item.price}
-					quantity={item.quantity}
-					totalPrice={item.totalPrice}
+					quantity={item.itemQuantity}
+					totalPrice={item.totalItemPrice}
 				/>
 			))}
 		</ul>

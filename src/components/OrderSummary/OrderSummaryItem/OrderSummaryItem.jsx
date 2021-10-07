@@ -1,19 +1,30 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
 import styles from './OrderSummaryItem.module.scss';
 import Button from '../../UI/Button/Button';
+import { cartActions } from '../../../store/cart-slice';
 
-const OrderSummaryItem = ({ imgUrl, name, price, quantity, totalPrice }) => {
+const OrderSummaryItem = ({
+	id,
+	imgUrl,
+	name,
+	price,
+	quantity,
+	totalPrice,
+}) => {
+	const dispatch = useDispatch();
+
 	const handleDecreaseQuantity = () => {
-		console.log('decrease');
+		dispatch(cartActions.removeItem(id));
 	};
 
 	const handleIncreaseQuantity = () => {
-		console.log('increase');
+		dispatch(cartActions.addItem({ id, price }));
 	};
 
 	const handleRemoveItem = () => {
-		console.log('remove item');
+		dispatch(cartActions.deleteItem(id));
 	};
 
 	return (
@@ -38,14 +49,17 @@ const OrderSummaryItem = ({ imgUrl, name, price, quantity, totalPrice }) => {
 			</div>
 
 			<div className={styles['total-price-remove']}>
-				<h3>{totalPrice}</h3>
-				<Button cssClass={styles.btn} onClick={handleRemoveItem}>X</Button>
+				<h3>{totalPrice.toFixed(2)}</h3>
+				<Button cssClass={styles.btn} onClick={handleRemoveItem}>
+					X
+				</Button>
 			</div>
 		</li>
 	);
 };
 
 OrderSummaryItem.defaultProps = {
+	id: '',
 	imgUrl: 'item',
 	name: 'item name',
 	price: 0,
@@ -54,6 +68,7 @@ OrderSummaryItem.defaultProps = {
 };
 
 OrderSummaryItem.propTypes = {
+	id: PropTypes.string,
 	imgUrl: PropTypes.string,
 	name: PropTypes.string,
 	price: PropTypes.number,

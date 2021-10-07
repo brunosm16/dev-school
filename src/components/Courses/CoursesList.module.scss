@@ -5,12 +5,8 @@
 	display: flex;
 	flex-direction: column;
 	gap: 0.75rem;
-	width: 100%;
-
-	.courses-list {
-		@include flex-center(space-around);
-		padding: 1.25rem;
-	}
+	width: 98.72%;
+	overflow-x: hidden;
 
 	.courses-header {
 		color: $color-white-1;
@@ -25,18 +21,26 @@
 			display: flex;
 
 			li a {
-                @include transition-pointer($transition);
+				@include transition-pointer($transition);
 				color: $color-white-1;
 				text-transform: capitalize;
 				text-decoration: underline;
-                margin-right: 0.25rem;
+				margin-right: 0.25rem;
 
-                &:hover,
-                &:active,
-                .active {
-                    color:$color-grey;
-                }
+				&:hover,
+				&:active,
+				.active {
+					color: $color-grey;
+				}
 			}
 		}
+	}
+
+	.courses-list {
+		@include flex-center(space-around);
+		padding: 1.25rem;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 1.2rem;
 	}
 }

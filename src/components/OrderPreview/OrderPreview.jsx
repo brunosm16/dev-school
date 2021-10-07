@@ -4,49 +4,17 @@ import { Link } from 'react-router-dom';
 import styles from './OrderPreview.module.scss';
 import OrderPreviewItem from './OrderPreviewItem/OrderPreviewItem';
 
-const mockItems = [
-	{
-		id: 'c1',
-		name: 'Complete React Js Course',
-		price: 39.99,
-		quantity: 3,
-		totalPrice: 119.97,
-		imgUrl:
-			'https://www.pngitem.com/pimgs/m/664-6644509_icon-react-js-logo-hd-png-download.png',
-	},
-
-	{
-		id: 'c1',
-		name: 'Complete React Js Course',
-		price: 39.99,
-		quantity: 3,
-		totalPrice: 119.97,
-		imgUrl:
-			'https://www.pngitem.com/pimgs/m/664-6644509_icon-react-js-logo-hd-png-download.png',
-	},
-
-	{
-		id: 'c1',
-		name: 'Complete React Js Course',
-		price: 39.99,
-		quantity: 3,
-		totalPrice: 119.97,
-		imgUrl:
-			'https://www.pngitem.com/pimgs/m/664-6644509_icon-react-js-logo-hd-png-download.png',
-	},
-];
-
-const OrderPreview = ({ onClosePreview }) => (
+const OrderPreview = ({ onClosePreview, items }) => (
 	<div className={styles['order-preview']}>
 		<ul className={styles['order-preview-list']}>
-			{mockItems.map((item) => (
+			{items.map((item) => (
 				<OrderPreviewItem
 					key={item.id}
 					id={item.id}
 					name={item.name}
 					price={item.price}
-					quantity={item.quantity}
-					totalPrice={item.totalPrice}
+					quantity={item.itemQuantity}
+					totalPrice={item.totalItemPrice}
 					imgUrl={item.imgUrl}
 				/>
 			))}
@@ -66,10 +34,12 @@ const OrderPreview = ({ onClosePreview }) => (
 
 OrderPreview.defaultProps = {
 	onClosePreview: () => {},
+	items: [],
 };
 
 OrderPreview.propTypes = {
 	onClosePreview: PropTypes.func,
+	items: PropTypes.arrayOf(PropTypes.object),
 };
 
 export default OrderPreview;

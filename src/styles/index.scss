@@ -16,6 +16,12 @@ a {
 	text-decoration: none;
 }
 
+html,
+body {
+	max-width: 100%;
+	overflow-x: hidden;
+}
+
 body {
 	font-family: var(--ff-primary);
 	font-size: 0.875rem;

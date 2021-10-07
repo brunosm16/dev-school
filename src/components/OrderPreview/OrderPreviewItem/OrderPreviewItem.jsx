@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai';
+import { useDispatch } from 'react-redux';
 import styles from './OrderPreviewItem.module.scss';
 import Button from '../../UI/Button/Button';
+import { cartActions } from '../../../store/cart-slice';
 
 const OrderPreviewItem = ({
 	// eslint-disable-next-line no-unused-vars
@@ -12,34 +14,53 @@ const OrderPreviewItem = ({
 	totalPrice,
 	imgUrl,
 	quantity,
-}) => (
-	<li className={styles['item-preview']}>
-		<div className={styles['img-container']}>
-			<img src={imgUrl} alt="item" />
-		</div>
+}) => {
+	const dispatch = useDispatch();
+	const handleAddItem = () => {
+		dispatch(
+			cartActions.addItem({
+				id,
+				name,
+				price,
+				totalItemPrice: totalPrice,
+				imgUrl,
+				itemQuantity: quantity,
+			})
+		);
+	};
 
-		<div className={styles['order-container']}>
-			<div className={styles['item-info']}>
-				<h4>{name}</h4>
-				<span>${price.toFixed(2)} / per item</span>
+	const handleRemoveItem = () => {
+		dispatch(cartActions.removeItem(id));
+	};
+	return (
+		<li className={styles['item-preview']}>
+			<div className={styles['img-container']}>
+				<img src={imgUrl} alt="item" />
 			</div>
 
-			<div className={styles['order-total-actions']}>
-				<h4 className={styles.total}>${totalPrice.toFixed(2)}</h4>
+			<div className={styles['order-container']}>
+				<div className={styles['item-info']}>
+					<h4>{name}</h4>
+					<span>${price.toFixed(2)} / per item</span>
+				</div>
 
-				<div className={styles.actions}>
-					<Button>
-						<AiOutlineMinus />
-					</Button>
-					<span>{quantity}</span>
-					<Button>
-						<AiOutlinePlus />
-					</Button>
+				<div className={styles['order-total-actions']}>
+					<h4 className={styles.total}>${totalPrice.toFixed(2)}</h4>
+
+					<div className={styles.actions}>
+						<Button onClick={handleRemoveItem}>
+							<AiOutlineMinus />
+						</Button>
+						<span>{quantity}</span>
+						<Button onClick={handleAddItem}>
+							<AiOutlinePlus />
+						</Button>
+					</div>
 				</div>
 			</div>
-		</div>
-	</li>
-);
+		</li>
+	);
+};
 
 OrderPreviewItem.defaultProps = {
 	id: '',
