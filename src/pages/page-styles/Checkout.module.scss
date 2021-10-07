@@ -1,6 +1,34 @@
 @import '../../styles/mixins';
+@import '../../styles/variables';
 
 .checkout {
     display: flex;
     justify-content: space-around;
+}
+
+.empty-checkout-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+    margin-top: 5rem;
+
+    h3 {
+        font-size: 3.25rem;
+    }
+
+    .link {
+        @include flex-center(center);
+        @include transition-pointer($transition);
+        width: 30%;
+        height: 50px;
+        margin: 0 auto;
+        border-radius: 7px;
+        background: $color-primary-1;
+        border: 1px $color-white-1 solid;
+        color: $color-white-1;
+        text-transform: capitalize;
+        font-size: 1.2rem;
+        margin-bottom: 0.875rem;
+    }
 }

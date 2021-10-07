@@ -2,7 +2,6 @@
 @import '../../styles/mixins';
 
 .checkout-form {
-    position: relative;
     width: 40%;
     padding: 1.75rem;
     background: $color-primary-1;
@@ -13,40 +12,46 @@
 
     .controls {
         display: grid;
-        row-gap: 2.125rem;
+        row-gap: 1rem;
     }
 
     label {
         color: $color-white-1;
-        font-size:1rem;
+        font-size: 1rem;
         font-family: $ff-primary;
     }
 
     input {
         width: 66.33%;
         border-radius: 15.23px;
-        border:none;
+        border: none;
         padding: 0.25rem 0.75rem;
         background: $color-primary-2;
-        color:$color-white-1;
+        color: $color-white-1;
     }
 
-    .form-btn {
-        @include transition-pointer($transition);
-        width: 9.25rem;
-        font-size: 1.2rem;
-        font-weight: bold;
-        background: $color-green-1;
-        border-radius: 7px;
-        border:none;
-        color:$color-white-1;
-        padding: 0.25rem;
-        position: absolute;
-        top:90.72%;
-        left: 33.2%;
+    .btn-container {
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        width: 100%;
 
-        &:hover {
-            background: $color-green-2;
+        .form-btn {
+            @include transition-pointer($transition);
+            width: 9.25rem;
+            font-size: 1.2rem;
+            font-weight: bold;
+            background: $color-green-1;
+            border-radius: 7px;
+            border: none;
+            color: $color-white-1;
+            padding: 0.25rem;
+
+            &:hover {
+                background: $color-green-2;
+            }
+
         }
     }
+
 }

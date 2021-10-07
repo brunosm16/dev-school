@@ -11,7 +11,7 @@ const OrderSummary = () => {
 		<div className={styles['order-summary']}>
 			<div className={styles['order-summary__list']}>
 				<OrderSummaryList items={cart.items} />
-
+				
 				<div className={styles['order-summary__info']}>
 					<Link to="/" className={styles.link}>
 						<h3>&larr;</h3>

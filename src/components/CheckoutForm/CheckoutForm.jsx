@@ -145,9 +145,11 @@ const CheckoutForm = ({ onConfirm }) => {
 				/>
 			</div>
 
-			<Button isSubmit onClick={handleSubmit} cssClass={styles['form-btn']}>
-				confirm
-			</Button>
+			<div className={styles['btn-container']}>
+				<Button isSubmit onClick={handleSubmit} cssClass={styles['form-btn']}>
+					confirm
+				</Button>
+			</div>
 		</form>
 	);
 };

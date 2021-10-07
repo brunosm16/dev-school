@@ -6,7 +6,6 @@
     flex-direction: column;
     justify-content: space-between;
     background: $color-grey-2;
-    height: 80vh;
     width: 50%;
     border-radius: 8px;
     padding: 2.75rem 2.25rem;
@@ -14,7 +13,7 @@
     .order-summary__info {
         @include flex-center();
         width: 100%;
-        margin-top: 2rem;
+        margin-top: 1rem;
         color: $color-primary-1;
 
         .link {
