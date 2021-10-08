@@ -70,6 +70,14 @@ const cartSlice = createSlice({
 			state.totalPrice -= itemToDelete.totalItemPrice;
 			state.totalQuantity -= itemToDelete.itemQuantity;
 		},
+
+		replaceCart(state, action) {
+			const newCart = action.payload;
+
+			state.items = newCart.items;
+			state.totalPrice = newCart.totalPrice;
+			state.totalQuantity = newCart.totalQuantity;
+		},
 	},
 });
 

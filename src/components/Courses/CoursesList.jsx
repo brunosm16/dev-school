@@ -1,15 +1,15 @@
 import { NavLink, Redirect, useParams } from 'react-router-dom';
 import React from 'react';
+import PropTypes from 'prop-types';
 import CourseItem from './CourseItem/CourseItem';
 import styles from './CoursesList.module.scss';
-import { fakeCourses } from '../../mock/fakeCourses';
 
-const Courses = () => {
+const Courses = ({ courses }) => {
 	const params = useParams();
 
-	const currentCategory = fakeCourses.find(
-		(category) => category.id === params.categoryId
-	);
+	const currentCategory =
+		courses[0] &&
+		courses[0].find((category) => category.id === params.categoryId);
 
 	if (!currentCategory) {
 		return <Redirect to="/not-found" />;
@@ -61,6 +61,14 @@ const Courses = () => {
 			</ul>
 		</div>
 	);
+};
+
+Courses.defaultProps = {
+	courses: [],
+};
+
+Courses.propTypes = {
+	courses: PropTypes.arrayOf(PropTypes.array),
 };
 
 export default Courses;

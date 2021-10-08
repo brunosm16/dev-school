@@ -14,6 +14,7 @@ const OrderPreviewItem = ({
 	totalPrice,
 	imgUrl,
 	quantity,
+	onUpdateItems,
 }) => {
 	const dispatch = useDispatch();
 	const handleAddItem = () => {
@@ -27,10 +28,13 @@ const OrderPreviewItem = ({
 				itemQuantity: quantity,
 			})
 		);
+
+		onUpdateItems();
 	};
 
 	const handleRemoveItem = () => {
 		dispatch(cartActions.removeItem(id));
+		onUpdateItems();
 	};
 	return (
 		<li className={styles['item-preview']}>
@@ -69,6 +73,7 @@ OrderPreviewItem.defaultProps = {
 	totalPrice: 0,
 	imgUrl: '',
 	quantity: 0,
+	onUpdateItems: () => {},
 };
 
 OrderPreviewItem.propTypes = {
@@ -78,6 +83,7 @@ OrderPreviewItem.propTypes = {
 	totalPrice: PropTypes.number,
 	imgUrl: PropTypes.string,
 	quantity: PropTypes.number,
+	onUpdateItems: PropTypes.func,
 };
 
 export default OrderPreviewItem;

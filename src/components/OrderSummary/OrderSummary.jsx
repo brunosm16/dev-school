@@ -11,7 +11,7 @@ const OrderSummary = () => {
 		<div className={styles['order-summary']}>
 			<div className={styles['order-summary__list']}>
 				<OrderSummaryList items={cart.items} />
-				
+
 				<div className={styles['order-summary__info']}>
 					<Link to="/" className={styles.link}>
 						<h3>&larr;</h3>
@@ -20,7 +20,10 @@ const OrderSummary = () => {
 
 					<div className={styles['order-info']}>
 						<h3>
-							subtotal: <span className={styles.total}>R${cart.totalPrice.toFixed(2)}</span>
+							subtotal:{' '}
+							<span className={styles.total}>
+								R${cart.totalPrice.toFixed(2)}
+							</span>
 						</h3>
 					</div>
 				</div>

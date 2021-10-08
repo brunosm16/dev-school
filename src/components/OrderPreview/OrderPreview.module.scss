@@ -26,11 +26,11 @@
 	}
 
 	&::before {
-		@include create-triangle(-5%, 89.2%, $color: $color-primary-1);
+		@include create-triangle(-3%, 89.2%, $color: $color-primary-1);
 	}
 
 	&::after {
-		@include create-triangle(-5%, 89.2%, $color: $color-primary-2);
+		@include create-triangle(-3%, 89.2%, $color: $color-primary-2);
 	}
 
 	.order-preview-list {
