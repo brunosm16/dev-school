@@ -2,19 +2,23 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialUiState = {
-	errorMsg: null,
+	notification: null,
 };
 
 const uiSlice = createSlice({
 	name: 'ui',
 	initialState: initialUiState,
 	reducers: {
-		setErrorMsg(state, action) {
-			state.errorMsg = action.payload;
+		setNotification(state, action) {
+			const notification = action.payload;
+			state.notification = {
+				msg: notification.msg,
+				isError: notification?.isError || false,
+				isLoading: notification.isLoading || false,
+			};
 		},
-
-		resetErrorMsg(state) {
-			state.errorMsg = null;
+		resetNotification(state) {
+			state.notification = null;
 		},
 	},
 });

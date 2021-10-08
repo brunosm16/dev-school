@@ -1,0 +1,23 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.notification {
+    @include flex-center(center);
+    padding: 0.975rem;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    background: $color-primary-1;
+    color: $color-white-1;
+
+    h2 {
+        // padding: 3rem;
+    }
+
+    &.error {
+        background: $color-red-1;
+    }
+
+    &.loading {
+        background: $color-green-1;
+    }
+}

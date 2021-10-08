@@ -1,5 +1,3 @@
-/* eslint-disable prefer-const */
-/* eslint-disable no-unused-vars */
 import { Switch, Route } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -13,6 +11,8 @@ import fetchCoursesData from './store/courses-actions';
 import { coursesActions } from './store/courses-slice';
 import LocalStorage from './storage/local-storage';
 import { cartActions } from './store/cart-slice';
+import Notification from './components/Notification/Notification';
+import { uiActions } from './store/ui-slice';
 
 let firstLoad = true;
 
@@ -20,6 +20,7 @@ const App = () => {
 	const dispatch = useDispatch();
 	const courses = useSelector((state) => state.courses);
 	const cart = useSelector((state) => state.cart);
+	const ui = useSelector((state) => state.ui);
 
 	/* Only show request state for 1000 ms */
 	useEffect(() => {
@@ -27,12 +28,16 @@ const App = () => {
 			if (courses.requestState.message && !courses.requestState.hasError) {
 				dispatch(coursesActions.resetRequestState(null));
 			}
+
+			if (ui.notification) {
+				dispatch(uiActions.resetNotification());
+			}
 		}, 1000);
 
 		return () => {
 			clearTimeout(timeoutId);
 		};
-	}, [courses.requestState]);
+	}, [courses.requestState, ui]);
 
 	/* Load courses */
 	useEffect(() => {
@@ -56,25 +61,42 @@ const App = () => {
 
 			dispatch(cartActions.replaceCart(cartObj));
 		} else {
-			console.log(cart);
 			LocalStorage.updateItems('cart', cart);
 		}
 	}, [cart]);
 
 	const coursesListArr = Object.values(courses.courses);
 
+	const getNotificationClass = () => {
+		if (ui.notification.isError) {
+			return 'error';
+		}
+		if (ui.notification.isLoading) {
+			return 'loading';
+		}
+		return '';
+	};
+
 	return (
-		<Layout>
-			<Switch>
-				<Route exact path="/" component={Home} />
-				<Route exact path="/checkout" component={Checkout} />
-				<Route exact path="/categories" component={Categories} />
-				<Route exact path="/categories/:categoryId">
-					<Courses courses={coursesListArr} />
-				</Route>
-				<Route path="*" component={NotFound} />
-			</Switch>
-		</Layout>
+		<>
+			{ui.notification && (
+				<Notification
+					msg={ui.notification.msg}
+					optionalClass={getNotificationClass()}
+				/>
+			)}
+			<Layout>
+				<Switch>
+					<Route exact path="/" component={Home} />
+					<Route exact path="/checkout" component={Checkout} />
+					<Route exact path="/categories" component={Categories} />
+					<Route exact path="/categories/:categoryId">
+						<Courses courses={coursesListArr} />
+					</Route>
+					<Route path="*" component={NotFound} />
+				</Switch>
+			</Layout>
+		</>
 	);
 };
 

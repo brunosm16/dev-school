@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 import UseInput from '../../hooks/use-input';
 import {
 	initDate,
@@ -43,6 +44,8 @@ const CheckoutForm = ({ onConfirm }) => {
 
 	const formIsValid = nameIsValid && cardNumberIsValid && cvvIsValid;
 
+	const cart = useSelector((state) => state.cart);
+
 	const nameRef = useRef();
 	const cardNumberRef = useRef();
 	const cvvRef = useRef();
@@ -79,6 +82,7 @@ const CheckoutForm = ({ onConfirm }) => {
 			name: nameValue,
 			cardNumber: cardNumberValue,
 			cvv: cvvValue,
+			cart,
 		});
 
 		resetForm();
