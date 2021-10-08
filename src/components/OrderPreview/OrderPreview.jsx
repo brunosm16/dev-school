@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import EmptyItems from '../Warnings/EmptyItems';
+import { DEFAULT_EMPTY_CART_MSG } from '../../utils/utils';
 import styles from './OrderPreview.module.scss';
 import OrderPreviewItem from './OrderPreviewItem/OrderPreviewItem';
 
@@ -23,7 +23,9 @@ const OrderPreview = ({ onClosePreview, items }) => (
 			</ul>
 		)}
 
-		{items.length === 0 && <EmptyItems />}
+		{items.length === 0 && (
+			<h4 className={styles['empty-warning']}>{DEFAULT_EMPTY_CART_MSG}</h4>
+		)}
 
 		<div className={styles['link-container']}>
 			<Link

@@ -6,6 +6,7 @@
 		"@reduxjs/toolkit": "^1.6.2",
 		"cra-template": "1.1.2",
 		"node-sass": "^4.14.1",
+		"npm-check-updates": "^11.8.5",
 		"prop-types": "^15.7.2",
 		"react": "^17.0.2",
 		"react-dom": "^17.0.2",
@@ -15,7 +16,7 @@
 		"react-scripts": "4.0.3"
 	},
 	"scripts": {
-		"start": "react-scripts start",
+		"start": "PORT=3001 react-scripts start",
 		"build": "react-scripts build",
 		"test": "react-scripts test",
 		"eject": "react-scripts eject",
@@ -52,6 +53,7 @@
 		"eslint-plugin-react": "^7.26.1",
 		"eslint-plugin-react-hooks": "^4.2.0",
 		"husky": "^7.0.2",
+		"json-server": "^0.17.0",
 		"prettier": "^2.4.1"
 	}
 }

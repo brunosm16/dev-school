@@ -35,7 +35,7 @@ const OrderSummaryItem = ({
 
 			<div className={styles['name-price']}>
 				<h3>{name}</h3>
-				<h4>{price}</h4>
+				<h4>${price.toFixed(2)}</h4>
 			</div>
 
 			<div className={styles['quantity-actions']}>
@@ -49,7 +49,7 @@ const OrderSummaryItem = ({
 			</div>
 
 			<div className={styles['total-price-remove']}>
-				<h3>{totalPrice.toFixed(2)}</h3>
+				<h3>${totalPrice.toFixed(2)}</h3>
 				<Button cssClass={styles.btn} onClick={handleRemoveItem}>
 					X
 				</Button>

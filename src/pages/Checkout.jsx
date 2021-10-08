@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import CheckoutForm from '../components/CheckoutForm/CheckoutForm';
 import OrderSummary from '../components/OrderSummary/OrderSummary';
-import EmptyItems from '../components/Warnings/EmptyItems';
+import { DEFAULT_EMPTY_CART_MSG } from '../utils/utils';
 import styles from './page-styles/Checkout.module.scss';
 
 const Checkout = () => {
@@ -20,8 +20,10 @@ const Checkout = () => {
 
 			{cart.items.length === 0 && (
 				<div className={styles['empty-checkout-container']}>
-					<EmptyItems />
-					<Link to="/" className={styles.link}>go back home</Link>
+					<h3>{DEFAULT_EMPTY_CART_MSG}</h3>
+					<Link to="/" className={styles.link}>
+						go back home
+					</Link>
 				</div>
 			)}
 		</div>
